@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CGPA Calculator</title>
     <script>
         function calculateSGPA() {
+            alert("calculateSGPA function called");
             let current_cgpa = parseFloat(document.getElementById("current_cgpa").value);
             let desired_cgpa = parseFloat(document.getElementById("desired_cgpa").value);
+            
+            console.log("Current CGPA: " + current_cgpa);
+            console.log("Desired CGPA: " + desired_cgpa);
 
             if (isNaN(current_cgpa) || isNaN(desired_cgpa)) {
                 document.getElementById("result").innerText = "Please enter valid numbers for CGPA.";
@@ -13,6 +19,7 @@
             }
 
             let needed_sgpa = ((desired_cgpa * 232) - (112 * current_cgpa)) / 120;
+            console.log("Needed SGPA: " + needed_sgpa);
             let result = "";
 
             if (needed_sgpa > 10) {
