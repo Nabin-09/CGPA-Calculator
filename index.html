@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CGPA Calculator</title>
+    <script>
+        function calculateSGPA() {
+            let current_cgpa = parseFloat(document.getElementById("current_cgpa").value);
+            let desired_cgpa = parseFloat(document.getElementById("desired_cgpa").value);
+
+            if (isNaN(current_cgpa) || isNaN(desired_cgpa)) {
+                document.getElementById("result").innerText = "Please enter valid numbers for CGPA.";
+                return;
+            }
+
+            let needed_sgpa = ((desired_cgpa * 232) - (112 * current_cgpa)) / 120;
+            let result = "";
+
+            if (needed_sgpa > 10) {
+                result = "NOT POSSIBLE! AUKAAT ME REH DALLE";
+            } else if (needed_sgpa < current_cgpa) {
+                result = "PADHAI CHOD DE!";
+            } else {
+                result = "SGPA needed for next 4 semesters: " + needed_sgpa.toFixed(2);
+            }
+
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+</head>
+<body>
+    <h1>CGPA Calculator</h1>
+    <label for="current_cgpa">Enter your current CGPA:</label>
+    <input type="number" id="current_cgpa" step="0.01" min="0" max="10"><br><br>
+    
+    <label for="desired_cgpa">Enter your desired CGPA:</label>
+    <input type="number" id="desired_cgpa" step="0.01" min="0" max="10"><br><br>
+    
+    <button onclick="calculateSGPA()">Calculate</button>
+    
+    <h2 id="result"></h2>
+</body>
+</html>
